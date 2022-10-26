@@ -17,7 +17,7 @@ We need the following hardware:
 ## Step 1: Install the Arduino IO libraries
 In order to establish communication with Adafruit IO, we need to install some additional libraries using the Arduino. First we connect the deck to the computer, and then we open Arduino. Once in Arduino we go straight to library and there we download Adafruit IO Arduino.
 
-<img src="https://user-images.githubusercontent.com/90243530/198085742-80d18763-86a9-4aca-9498-76f32032d51a.png" width="auto" height="auto"/>
+<img src="https://user-images.githubusercontent.com/90243530/198085742-80d18763-86a9-4aca-9498-76f32032d51a.png" width="500" height="300"/>
 
 For the Arduino Board quickstart setup, go to https://docs.google.com/document/d/1VLVhwIiPBkJHAkmd1BA77yfsYW7vlDimgMjPT_4U68I/edit and follow the instructions.
 
@@ -26,14 +26,14 @@ For the Arduino Board quickstart setup, go to https://docs.google.com/document/d
 ## Step 2: Adafruit IO Account & Feed
 To ensure that the physio can read the state ethics on Adafruit IO, an account and feed must first be created. For the account, we go to the following website: https://io.adafruit.com/. See the images 2-4 below for how to make a feed.
 
-<img src="https://user-images.githubusercontent.com/90243530/198086493-cd9c6bf7-281e-44f7-924b-195c8aa8b819.png" width="auto" height="auto"/>
+<img src="https://user-images.githubusercontent.com/90243530/198086493-cd9c6bf7-281e-44f7-924b-195c8aa8b819.png" width="700" height="400"/>
 
 #
 #
 ## Step 3: Find the yellow key
 After creating an account and feed, you need to find the yellow key. The following website: https://learn.adafruit.com/adafruit-io-basics-digital-input?view=all describes how to find the yellow key. When the key appears, you click on the key, and you will get your own IO key that you can use in Arduino to connect to the website.
 
-<img src="https://user-images.githubusercontent.com/90243530/198086905-3763072e-14b8-434e-a033-7ae4a9e488b4.png" width="auto" height="auto"/>
+<img src="https://user-images.githubusercontent.com/90243530/198086905-3763072e-14b8-434e-a033-7ae4a9e488b4.png" width="300" height="400"/>
 
 #
 #
@@ -55,14 +55,14 @@ We see when we upload, that the data does not go to the new feed name, but to "C
 
 Now let's try it out! You see that Gloria following the work-out very well but at some point you see that this has immediately dropped, this is probably due to a small pause. This feed is what the physio sees, you see the calories that have been burned and how long has been trained.
 
-<img src="https://user-images.githubusercontent.com/90243530/198088069-502f9bcd-7089-4655-b6ca-11517740809f.png" width="auto" height="auto"/>
+<img src="https://user-images.githubusercontent.com/90243530/198088069-502f9bcd-7089-4655-b6ca-11517740809f.png" width="700" height="400"/>
 
 #
 #
 ## Step 6: The app
 Not only can the physio see the progress but also the user via the app. By going to my progress you can see the dashboard with the different measurements
 
-<img src="https://user-images.githubusercontent.com/90243530/198088518-8e4194e9-96e2-488b-bcac-179f20f0a83e.png" width="auto" height="auto"/>
+<img src="https://user-images.githubusercontent.com/90243530/198088518-8e4194e9-96e2-488b-bcac-179f20f0a83e.png" width="700" height="400"/>
 
 #
 #
