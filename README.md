@@ -1,3 +1,2 @@
-Made by Gloria Kwako 24-10-2022
-# Manual IoT
-<img src="https://user-images.githubusercontent.com/90243530/197567883-52358b47-e399-40a4-bbd9-d3347e7c88b3.jpg" width="800" height="600"/>
+<img src="https://user-images.githubusercontent.com/90243530/198007126-9f6587bd-6c7d-40d5-92d4-307ca15fa6bc.png" width="auto" height="auto"/>
+
