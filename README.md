@@ -190,12 +190,17 @@ Let's check the adafruit feed, you should see something like this.
 
 In the feed you see activity. By clicking on the button, data is sent to the feed, while this data is being sent you get visual feedback back because the light is flickering.
 
+<img src="https://user-images.githubusercontent.com/90243530/198131524-aa67e661-8dc5-4cd5-8fb8-e7b6c43424ba.PNG" width="200" height="200"/><img src="https://user-images.githubusercontent.com/90243530/198131531-8814150c-b27d-4e3f-afed-3f877e1f18bc.PNG" width="200" height="200"/><img src="https://user-images.githubusercontent.com/90243530/198131524-aa67e661-8dc5-4cd5-8fb8-e7b6c43424ba.PNG" width="200" height="200"/>
+
+
 #
 #
 ## The app
 Not only can the physio see the progress but also the user via the app. By going to my progress you can see the dashboard with the different measurements
 
 <img src="https://user-images.githubusercontent.com/90243530/198088518-8e4194e9-96e2-488b-bcac-179f20f0a83e.png" width="700" height="400"/>
+https://www.figma.com/proto/lOkrlrQppnPKSpm86yZTMG/AI---Artificial-Intelligence?page-id=1%3A3&node-id=38%3A285&starting-point-node-id=38%3A279
+
 
 #
 #
