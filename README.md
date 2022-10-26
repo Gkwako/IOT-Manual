@@ -14,7 +14,7 @@ We need the following hardware:
 
 #
 #
-## Step 1: Install the Arduino IO libraries
+## Install the Arduino IO libraries
 In order to establish communication with Adafruit IO, we need to install some additional libraries using the Arduino. First we connect the deck to the computer, and then we open Arduino. Once in Arduino we go straight to library and there we download Adafruit IO Arduino.
 
 <img src="https://user-images.githubusercontent.com/90243530/198085742-80d18763-86a9-4aca-9498-76f32032d51a.png" width="500" height="300"/>
@@ -23,21 +23,21 @@ For the Arduino Board quickstart setup, go to https://docs.google.com/document/d
 
 #
 #
-## Step 2: Adafruit IO Account & Feed
+## Adafruit IO Account & Feed
 To ensure that the physio can read the state ethics on Adafruit IO, an account and feed must first be created. For the account, we go to the following website: https://io.adafruit.com/. See the images 2-4 below for how to make a feed.
 
 <img src="https://user-images.githubusercontent.com/90243530/198086493-cd9c6bf7-281e-44f7-924b-195c8aa8b819.png" width="700" height="400"/>
 
 #
 #
-## Step 3: Find the yellow key
+## Find the yellow key
 After creating an account and feed, you need to find the yellow key. The following website: https://learn.adafruit.com/adafruit-io-basics-digital-input?view=all describes how to find the yellow key. When the key appears, you click on the key, and you will get your own IO key that you can use in Arduino to connect to the website.
 
 <img src="https://user-images.githubusercontent.com/90243530/198086905-3763072e-14b8-434e-a033-7ae4a9e488b4.png" width="300" height="400"/>
 
 #
 #
-## Step 4: Let's start
+## Let's start connecting
 To connect, we must first enter the Wi-Fi network and the IO key data.
 
 <img src="https://user-images.githubusercontent.com/90243530/198087425-36932f60-8de3-41fe-92eb-5d15b9bf5361.png" width="auto" height="auto"/>
@@ -48,7 +48,7 @@ But we now see that there are dots in the serial monitor, this means that there 
 
 #
 #
-## Step 5: Send data
+## Send data
 We see when we upload, that the data does not go to the new feed name, but to "Connected". It creates a new feed name, to change it you must also give it the correct name in Arduino.
 
 <img src="https://user-images.githubusercontent.com/90243530/198087824-2597e9ac-8d69-4b75-ab74-e3f68bbe537f.png" width="auto" height="auto"/>
@@ -59,7 +59,7 @@ Now let's try it out! You see that Gloria following the work-out very well but a
 
 #
 #
-## Step 6: Giving feedback with Ledlight
+## Giving feedback with Ledlight
 Now that we have succeeded in getting data, we want to get this feedback in the form of colors. We will do this through Ledlighten. For this we have to plug the LED light with the Arduino deck. I paste the code of the Ledlight into the data receiver. this is the code: 
 
     #include "config.h"
@@ -153,30 +153,36 @@ Now that we have succeeded in getting data, we want to get this feedback in the 
            }
         }
 
-The led light is on, but it doesn't seem to work when I click the button.
+The led light is on, but it doesn't seem to work when I click the button. But in the Serial Monitor you can see that the data is sending.
 
+    21:13:16.658 -> Adafruit IO connected.
+    21:13:21.521 -> sending button -> 1
+    21:13:23.164 -> sending button -> 0
+    21:13:34.529 -> sending button -> 1
+    21:13:35.320 -> sending button -> 0
 
+okey the problem turns out to be with the color settings, if I change the color to white and blue I get the light off and on.
 
+https://user-images.githubusercontent.com/90243530/198120488-6ae0ae74-4f65-417e-8401-fb18949877d4.mov
 
+Let's check the adafruit feed, you should see something like this.
 
-
-
-
+<img src="https://user-images.githubusercontent.com/90243530/198126545-5d4aa8d8-4bdf-4258-83d5-c4f52fdba96a.png" width="700" height="400"/>
 
 #
 #
-## Step 6: The app
+## The app
 Not only can the physio see the progress but also the user via the app. By going to my progress you can see the dashboard with the different measurements
 
 <img src="https://user-images.githubusercontent.com/90243530/198088518-8e4194e9-96e2-488b-bcac-179f20f0a83e.png" width="700" height="400"/>
 
 #
 #
-## Step 7: Summary send data
+## Summary send data
 When the user performs the workout in front of the mirror. The mirror scans the movements and saves this data on the feed, this feed is saved every time the user makes a movement. In this manual I used the Arduino deck and a button as an example. The Arduino deck represents the mirror and the button is the scan that the mirror performs.
 
 #
 #
-## Step 8*: How does the silhouette of the mirror work
+## How does the silhouette of the mirror work
 We know that the mirror helps the user by indicating with a silhout when they are doing something wrong. I will briefly show how we can create this by using LED light and a bot. To install everything, go to https://github.com/Gkwako/IOT-Manuals#ToDo-Telegram.
 
