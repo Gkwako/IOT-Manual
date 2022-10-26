@@ -62,106 +62,98 @@ Now let's try it out! You see that Gloria following the work-out very well but a
 ## Step 6: Giving feedback with Ledlight
 Now that we have succeeded in getting data, we want to get this feedback in the form of colors. We will do this through Ledlighten. For this we have to plug the LED light with the Arduino deck. I paste the code of the Ledlight into the data receiver. this is the code: 
 
-#include "config.h"
-#include <FastLED.h>
+    #include "config.h"
+    #include <FastLED.h>
 
-// digital pin 5
-#define BUTTON_PIN D0
-#define NUM_LEDS 9
+    // digital pin 5
+        #define BUTTON_PIN D0
+        #define NUM_LEDS 9
 
-#define DATA_PIN D5
-#define CLOCK_PIN 13
+        #define DATA_PIN D5
+        #define CLOCK_PIN 13
 
-CRGB leds[NUM_LEDS];
+        CRGB leds[NUM_LEDS];
 
-// button state
-bool current = false;
-bool last = false;
+    // button state
+        bool current = false;
+        bool last = false;
 
-// set up the 'digital' feed
-AdafruitIO_Feed *digital = io.feed("progress");
+    // set up the 'digital' feed
+        AdafruitIO_Feed *digital = io.feed("progress");
 
-void setup() {
+    void setup() {
     FastLED.addLeds<WS2811, DATA_PIN, RGB>(leds, NUM_LEDS);
-  // set button pin as an input
-  pinMode(BUTTON_PIN, INPUT);
+   
+    // set button pin as an input
+        pinMode(BUTTON_PIN, INPUT);
 
-  // start the serial connection
-  Serial.begin(115200);
+    // start the serial connection
+        Serial.begin(115200);
 
-  // wait for serial monitor to open
-  while(! Serial);
+    // wait for serial monitor to open
+        while(! Serial);
 
-  // connect to io.adafruit.com
-  Serial.print("Connecting to Adafruit IO");
-  io.connect();
+    // connect to io.adafruit.com
+        Serial.print("Connecting to Adafruit IO");
+        io.connect();
 
-  // wait for a connection
-  while(io.status() < AIO_CONNECTED) {
-    Serial.print(".");
-    delay(500);
-  }
+    // wait for a connection
+        while(io.status() < AIO_CONNECTED) {
+        Serial.print(".");
+        delay(500);
+        }
 
-  // we are connected
-  Serial.println();
-  Serial.println(io.statusText());
+    // we are connected
+        Serial.println();
+        Serial.println(io.statusText());
+        }
 
-}
-
-void loop() {
-   for(int whiteLed = 0; whiteLed < NUM_LEDS; whiteLed = whiteLed + 1) {
+        void loop() {
+        for(int whiteLed = 0; whiteLed < NUM_LEDS; whiteLed = whiteLed + 1) {
+      
       // Turn our current led on to white, then show the leds
-      leds[whiteLed] = CRGB::White
-      ;
+        leds[whiteLed] = CRGB::White
+        ;
 
       FastLED.show();
 
       // Wait a little bit
-      delay(700);
+        delay(700);
 
       // Turn our current led back to black for the next loop around
-      leds[whiteLed] = CRGB::Red
-      ;
+        leds[whiteLed] = CRGB::Red
+        ;
 
-  // io.run(); is required for all sketches.
-  // it should always be present at the top of your loop
-  // function. it keeps the client connected to
-  // io.adafruit.com, and processes any incoming data.
-  io.run();
+      // io.run(); is required for all sketches.
+      // it should always be present at the top of your loop
+      // function. it keeps the client connected to
+      // io.adafruit.com, and processes any incoming data.
+    
+    io.run();
 
-  // grab the current state of the button.
-  // we have to flip the logic because we are
-  // using a pullup resistor.
-  if(digitalRead(BUTTON_PIN) == LOW)
-    current = true;
-  else
-    current = false;
+      // grab the current state of the button.
+      // we have to flip the logic because we are
+      // using a pullup resistor.
+          if(digitalRead(BUTTON_PIN) == LOW)
+            current = true;
+          else
+            current = false;
 
-  // return if the value hasn't changed
-  if(current == last)
-    return;
+      // return if the value hasn't changed
+          if(current == last)
+            return;
 
-  // save the current state to the 'digital' feed on adafruit io
-  Serial.print("sending button -> ");
-  Serial.println(current);
-  digital->save(current);
+      // save the current state to the 'digital' feed on adafruit io
+          Serial.print("sending button -> ");
+          Serial.println(current);
+          digital->save(current);
 
-  // store last button state
-  last = current;
-   }
-}
+      // store last button state
+          last = current;
+           }
+        }
 
-
-
-
-
-
-
-
-
-
-
-The led light is on, but when I click the button it does nothing.
+The led light is on, but it doesn't seem to work when I click the button.
 
 
 
