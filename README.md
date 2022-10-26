@@ -42,6 +42,12 @@ To connect, we must first enter the Wi-Fi network and the IO key data.
 
 <img src="https://user-images.githubusercontent.com/90243530/198087425-36932f60-8de3-41fe-92eb-5d15b9bf5361.png" width="auto" height="auto"/>
 
+    #define IO_USERNAME "Gkwako"
+    #define IO_KEY "aio_DfOW177YnXb49mrs1xPnhT2rjAMZ"
+    
+    #define WIFI_SSID "TMNL-AF00F1"                 
+    #define WIFI_PASS "B6MBDW7U54GGMBV7"
+
 But we now see that there are dots in the serial monitor, this means that there are internet problems, to fix this, I have to use other wifi data.
 
 <img src="https://user-images.githubusercontent.com/90243530/198087592-82a74a4f-b4a4-4c6d-b766-81838b797650.png" width="auto" height="auto"/>
@@ -52,10 +58,14 @@ But we now see that there are dots in the serial monitor, this means that there 
 We see when we upload, that the data does not go to the new feed name, but to "Connected". It creates a new feed name, to change it you must also give it the correct name in Arduino.
 
 <img src="https://user-images.githubusercontent.com/90243530/198087824-2597e9ac-8d69-4b75-ab74-e3f68bbe537f.png" width="auto" height="auto"/>
+        
+    AdafruitIO_Feed *digital = io.feed("progress");
 
 Now let's try it out! You see that Gloria following the work-out very well but at some point you see that this has immediately dropped, this is probably due to a small pause. This feed is what the physio sees, you see the calories that have been burned and how long has been trained.
 
+
 <img src="https://user-images.githubusercontent.com/90243530/198088069-502f9bcd-7089-4655-b6ca-11517740809f.png" width="700" height="400"/>
+
 
 #
 #
@@ -163,11 +173,22 @@ The led light is on, but it doesn't seem to work when I click the button. But in
 
 okey the problem turns out to be with the color settings, if I change the color to white and blue I get the light off and on.
 
+      leds[whiteLed] = CRGB::White;
+      FastLED.show();
+
+      // Wait a little bit
+            delay(700);
+
+      // Turn our current led back to black for the next loop around
+        leds[whiteLed] = CRGB::Blue;
+
 https://user-images.githubusercontent.com/90243530/198120488-6ae0ae74-4f65-417e-8401-fb18949877d4.mov
 
 Let's check the adafruit feed, you should see something like this.
 
 <img src="https://user-images.githubusercontent.com/90243530/198126545-5d4aa8d8-4bdf-4258-83d5-c4f52fdba96a.png" width="700" height="400"/>
+
+In the feed you see activity. By clicking on the button, data is sent to the feed, while this data is being sent you get visual feedback back because the light is flickering.
 
 #
 #
