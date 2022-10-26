@@ -15,7 +15,13 @@ We need the following hardware:
 #
 #
 ## Install the Arduino IO libraries
-In order to establish communication with Adafruit IO, we need to install some additional libraries using the Arduino. First we connect the deck to the computer, and then we open Arduino. Once in Arduino we go straight to library and there we download Adafruit IO Arduino.
+In order to establish communication with Adafruit IO, we need to install some additional libraries using the Arduino. 
+
+First we connect the deck to the computer, and then we open Arduino. 
+
+<img width="516" alt="Schermafbeelding 2022-10-26 om 23 21 17" src="https://user-images.githubusercontent.com/90243530/198140804-fcee4354-3c4f-4955-80e3-b603625b27a6.png"><img width="516" alt="Schermafbeelding 2022-10-26 om 23 21 47" src="https://user-images.githubusercontent.com/90243530/198140823-0b646c9c-2601-41f4-ad1f-8a15b6e3a957.png">
+
+Once in Arduino we go straight to library and there we download Adafruit IO Arduino.
 
 <img src="https://user-images.githubusercontent.com/90243530/198085742-80d18763-86a9-4aca-9498-76f32032d51a.png" width="500" height="300"/>
 
@@ -42,15 +48,17 @@ To connect, we must first enter the Wi-Fi network and the IO key data.
 
 <img src="https://user-images.githubusercontent.com/90243530/198087425-36932f60-8de3-41fe-92eb-5d15b9bf5361.png" width="auto" height="auto"/>
 
-    #define IO_USERNAME "Gkwako"
-    #define IO_KEY "aio_DfOW177YnXb49mrs1xPnhT2rjAMZ"
+    #define IO_USERNAME "....."
+    #define IO_KEY "...._...."
     
-    #define WIFI_SSID "TMNL-AF00F1"                 
-    #define WIFI_PASS "B6MBDW7U54GGMBV7"
+    #define WIFI_SSID "......."                 
+    #define WIFI_PASS "........."
 
 But we now see that there are dots in the serial monitor, this means that there are internet problems, to fix this, I have to use other wifi data.
 
 <img src="https://user-images.githubusercontent.com/90243530/198087592-82a74a4f-b4a4-4c6d-b766-81838b797650.png" width="auto" height="auto"/>
+
+By using a different network you can see in the 2nd picture that the connection was successful, causing the Arduino deck to glow a blue light.
 
 #
 #
@@ -59,18 +67,30 @@ We see when we upload, that the data does not go to the new feed name, but to "C
 
 <img src="https://user-images.githubusercontent.com/90243530/198087824-2597e9ac-8d69-4b75-ab74-e3f68bbe537f.png" width="auto" height="auto"/>
         
-    AdafruitIO_Feed *digital = io.feed("progress");
+    AdafruitIO_Feed *digital = io.feed(".......");
 
-Now let's try it out! You see that Gloria following the work-out very well but at some point you see that this has immediately dropped, this is probably due to a small pause. This feed is what the physio sees, you see the calories that have been burned and how long has been trained.
-
+Now let's try it out! You see that Gloria following the work-out very well but at some point you see that this has immediately dropped, this is probably due to a small pause.
 
 <img src="https://user-images.githubusercontent.com/90243530/198088069-502f9bcd-7089-4655-b6ca-11517740809f.png" width="700" height="400"/>
 
+This feed is what the physio sees, you see the calories that have been burned and how long has been trained.
 
 #
 #
 ## Giving feedback with Ledlight
-Now that we have succeeded in getting data, we want to get this feedback in the form of colors. We will do this through Ledlighten. For this we have to plug the LED light with the Arduino deck. I paste the code of the Ledlight into the data receiver. this is the code: 
+Now that we have succeeded in getting data, we want to get this feedback in the form of colors, we will do this through Led light. For this we have to plug the LED light on the Arduino deck. 
+
+Connecting wires (THE WIRES MAY HAVE OTHER COLORS)
+-  Wire from 5V to 3V3
+- Middle wire (Din) to D5*
+- GND wire to GND
+
+<img width="533" alt="Schermafbeelding 2022-10-26 om 23 34 32" src="https://user-images.githubusercontent.com/90243530/198142821-90a67ae3-d218-4920-9a3e-ff3952197ba7.png">
+
+*can you also not read the pins on your NodeMCU? Then look for the pins via the https://duckduckgo.com/?t=ffab&q=nodemcu&iax=images&ia=images
+
+Now paste the code of the Ledlight into the data receiver. 
+this is the code: 
 
     #include "config.h"
     #include <FastLED.h>
@@ -192,23 +212,23 @@ In the feed you see activity. By clicking on the button, data is sent to the fee
 
 <img src="https://user-images.githubusercontent.com/90243530/198131524-aa67e661-8dc5-4cd5-8fb8-e7b6c43424ba.PNG" width="200" height="200"/><img src="https://user-images.githubusercontent.com/90243530/198131531-8814150c-b27d-4e3f-afed-3f877e1f18bc.PNG" width="200" height="200"/><img src="https://user-images.githubusercontent.com/90243530/198131524-aa67e661-8dc5-4cd5-8fb8-e7b6c43424ba.PNG" width="200" height="200"/>
 
-
 #
 #
 ## The app
-Not only can the physio see the progress but also the user via the app. By going to my progress you can see the dashboard with the different measurements
+Not only can the physio see the progress but also the user via the app. By doing the progress you can see the dashboard with the different measurements
 
 <img src="https://user-images.githubusercontent.com/90243530/198088518-8e4194e9-96e2-488b-bcac-179f20f0a83e.png" width="700" height="400"/>
 https://www.figma.com/proto/lOkrlrQppnPKSpm86yZTMG/AI---Artificial-Intelligence?page-id=1%3A3&node-id=38%3A285&starting-point-node-id=38%3A279
 
-
 #
 #
 ## Summary send data
-When the user performs the workout in front of the mirror. The mirror scans the movements and saves this data on the feed, this feed is saved every time the user makes a movement. In this manual I used the Arduino deck and a button as an example. The Arduino deck represents the mirror and the button is the scan that the mirror performs.
+When the user performs the workout in front of the mirror. The mirror scans the movements and saves this data on the feed, this feed is saved every time the user makes a movement. In this manual I used the Arduino deck a button and led lights as an example. The Arduino deck represents the mirror and the button is the scan that the mirror performs, the led light is the feedback that is being sent to the feed.
+
+Now you know how to send feedback and see it visually.
 
 #
 #
-## How does the silhouette of the mirror work
+## Extra: How does the silhouette of the mirror work
 We know that the mirror helps the user by indicating with a silhout when they are doing something wrong. I will briefly show how we can create this by using LED light and a bot. To install everything, go to https://github.com/Gkwako/IOT-Manuals#ToDo-Telegram.
 
